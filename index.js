@@ -83,7 +83,7 @@ Use the addFlavor function below to do the following:
 
 function addFlavor(array, flavor){
   let tempArray = copy(array);
-  tempArray = tempArray.unshift(flavor);
+  tempArray.unshift(flavor);
   return tempArray;
 }
 
