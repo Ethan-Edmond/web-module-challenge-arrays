@@ -139,7 +139,6 @@ Use the removeFlavorByName function below to do the following:
     HINT: You can use .splice() for this
 */
 
-// It makes sense, but I need to test this
 function removeFlavorByName(array, flavor){
   let tempArray = copy(array);
   let flavorIndex = tempArray.indexOf(flavor);
@@ -178,6 +177,10 @@ function filterByWord(array, string){
     }
   }
   return tempArray;
+
+  // But what if I did use filter?
+
+  // return copy(array).filter((a)=> a.includes(string));
 }
 
 
@@ -199,6 +202,10 @@ function getAverageWordLength(array){
     counter += elem.split(" ").length;
   }
   return counter / array.length;
+
+  // just playing golf
+
+  // return array.reduce((a,b) => a + b.split(" ").length,0);
 }
 
 console.log(getAverageWordLength(originalFlavors));
@@ -226,6 +233,14 @@ function getRandomFlavors(ary1, ary2, ary3, ary4){
     aryary.splice(choiceIndex,1);
   }
   return returnAry;
+
+  // just playing golf
+
+  // let aryary = [...ary1, ...ary2, ...ary3, ...ary4];
+  // while (aryary.length > 31) {
+  //   aryary.splice(Math.floor(Math.random() * aryary.length), 1);
+  // }
+  // return aryary;
 }
 
 // NEW DATA ARRAYS FOR STRETCH 2 ⬇️
