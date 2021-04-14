@@ -118,8 +118,9 @@ Use the getFlavorByIndex function below to do the following:
     For example: running getFlavorByIndex(originalFlavors, 2) would return "Black Walnut", assuming Rainbow Sherbert has been added successfully
 */
 
-function getFlavorByIndex(/*your code here*/){
-    /*your code here*/
+function getFlavorByIndex(array, number){
+  let tempArray = copy(array);
+  return tempArray[number];
 }
 
 
@@ -138,8 +139,12 @@ Use the removeFlavorByName function below to do the following:
     HINT: You can use .splice() for this
 */
 
-function removeFlavorByName(/*your code here*/){
-    /*your code here*/
+// It makes sense, but I need to test this
+function removeFlavorByName(array, flavor){
+  let tempArray = copy(array);
+  let flavorIndex = tempArray.indexOf(flavor);
+  tempArray.splice(flavorIndex, 1);
+  return tempArray;
 }
 
 
@@ -164,8 +169,15 @@ Use the filterByWord function below to do the following:
     DO NOT USE ADVANCED ARRAY METHODS (i.e. .filter) to solve this problem. 
 */
 
-function filterByWord(/*your code here*/){
-    /*your code here*/
+function filterByWord(array, string){
+  let tempArray = copy(array);
+  for (let i = 0; i < tempArray.length; i++){
+    if (!tempArray[i].includes(string)) {
+      tempArray.splice(i,1);
+      i--;
+    }
+  }
+  return tempArray;
 }
 
 
@@ -181,9 +193,15 @@ Use the getAverageWordLength function below to do the following:
     For example: getAverageWordLength(originalFlavors) should return a number between 0 and 3.     
 */
 
-function getAverageWordLength(/*code here*/){
-    /*code here*/
+function getAverageWordLength(array){
+  let counter = 0;
+  for (let elem of array){
+    counter += elem.split(" ").length;
+  }
+  return counter / array.length;
 }
+
+console.log(getAverageWordLength(originalFlavors));
 
 
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪💪💪💪
@@ -199,8 +217,15 @@ Use the getRandomFlavors function and new arrays below to do the following:
 */
 
 
-function getRandomFlavors(/*code here*/){
-    /*code here*/
+function getRandomFlavors(ary1, ary2, ary3, ary4){
+  let aryary = [...ary1, ...ary2, ...ary3, ...ary4];
+  let returnAry = [];
+  for (let i = 0; i < 31; i++){
+    let choiceIndex = Math.floor(Math.random() * aryary.length);
+    returnAry.push(aryary[choiceIndex]);
+    aryary.splice(choiceIndex,1);
+  }
+  return returnAry;
 }
 
 // NEW DATA ARRAYS FOR STRETCH 2 ⬇️
@@ -228,7 +253,7 @@ const newFlavors = [
     "Daiquiri Ice",
     "Rainbow Sherbet",
     "Rainbow Swirl"
-] 
+]
 
 const seasonalFlavors = [
     "America's Birthday Cake",
@@ -284,7 +309,7 @@ const regionalFlavors = [
     "Caramel 'n' Cookies"
 ]
 
-
+console.log(getRandomFlavors(originalFlavors,newFlavors,seasonalFlavors,regionalFlavors));
 
 /* 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 */
 function foo(){
